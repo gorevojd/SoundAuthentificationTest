@@ -878,12 +878,12 @@ WinMain(HINSTANCE Instance,
 	globalSoundBuffer =	win32InitDirectSound(globalScreen->Window);
 	globalSoundCaptureBuffer = win32InitDirectSoundCapture();
 
-	loaded_wav_sound loadedMusic = ReadWAVFile("music.wav");
+	loaded_wav_sound loadedMusic = ReadWAVFile("data/music.wav");
 	sound_buffer musicBuffer =
 		CreateSoundBufferForLoadedSound(globalScreen->Window, loadedMusic);
 
 	FillSoundBuffer(globalSoundBuffer, globalSoundOutput, 256);
-	WriteSoundFileFromSoundBuffer("MusicTest.wav", globalSoundBuffer.buffer);
+	WriteSoundFileFromSoundBuffer("data/MusicTest.wav", globalSoundBuffer.buffer);
 
 	float gradOffset = 0;
 	bool capturingSound = false;
@@ -938,7 +938,7 @@ WinMain(HINSTANCE Instance,
 			}
 			
 		}
-		
+		//PlaySoundBuffer(musicBuffer.buffer);
 		HDC dc = GetDC(globalScreen->Window);
 		RenderMovingGradient(globalScreen, gradOffset);
 		i32 w, h;
